@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Suntrenia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary-blue: #2563eb;
+      --secondary-blue: #1e40af;
       --accent-orange: #f97316;
       --dark-navy: #0f172a;
       --light-navy: #1e293b;
@@ -16,76 +18,198 @@
       --text-muted: #94a3b8;
       --border-color: rgba(255,255,255,0.1);
       --card-bg: rgba(255,255,255,0.05);
+      --success-green: #22c55e;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Work Sans', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); color: var(--text-primary); line-height: 1.7; min-height: 100vh; }
-    nav { background: rgba(15,23,42,0.95); backdrop-filter: blur(10px); padding: 16px 40px; border-bottom: 1px solid var(--border-color); }
-    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-    .logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.4rem; color: #fff; text-decoration: none; }
-    .logo span { color: var(--accent-orange); }
-    nav a.back { color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
-    nav a.back:hover { color: #fff; }
-    .content { max-width: 900px; margin: 0 auto; padding: 60px 40px 80px; }
-    .page-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border-color); }
-    .page-header h1 { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 2.4rem; margin-bottom: 10px; }
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .bg-pattern {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+      background: radial-gradient(circle at 25% 25%, rgba(37,99,235,0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 75% 75%, rgba(249,115,22,0.1) 0%, transparent 50%),
+                  linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    /* Nav */
+    nav {
+      background: rgba(15,23,42,0.95);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.5rem;
+      color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px;
+    }
+    .back-link {
+      color: var(--text-muted); font-size: 0.9rem; text-decoration: none;
+      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text-primary); }
+
+    /* Content */
+    .content { max-width: 960px; margin: 0 auto; padding: 60px 40px 80px; }
+    .page-header {
+      margin-bottom: 48px; padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .page-tag {
+      display: inline-block; padding: 4px 14px;
+      background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 100px; color: #60a5fa; font-size: 0.78rem;
+      font-family: 'Outfit', sans-serif; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-family: 'Outfit', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px; line-height: 1.1;
+    }
     .page-header p { color: var(--text-muted); font-size: 0.95rem; }
-    .section { margin-bottom: 36px; }
-    .section h2 { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.1rem; color: #fff; margin-bottom: 12px; padding-left: 14px; border-left: 3px solid var(--primary-blue); }
-    .section p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
-    .highlight-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px 24px; margin: 12px 0; }
-    .highlight-box p { color: var(--text-secondary); font-size: 0.9rem; }
-    footer { text-align: center; padding: 32px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color); }
-    a { color: var(--primary-blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    /* Sections */
+    .section { margin-bottom: 40px; }
+    .section h2 {
+      font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.15rem;
+      color: var(--text-primary); margin-bottom: 14px;
+      padding-left: 16px; border-left: 3px solid var(--primary-blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px; }
+    .highlight-box {
+      background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 14px; padding: 20px 24px; margin: 14px 0;
+    }
+    .highlight-box p { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--card-bg); border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 28px 32px; margin-top: 16px;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 14px;
+      padding: 10px 0; border-bottom: 1px solid var(--border-color);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item i { color: var(--primary-blue); width: 20px; text-align: center; }
+    .contact-item span { color: var(--text-muted); font-size: 0.85rem; min-width: 100px; }
+    .contact-item a { color: var(--text-secondary); text-decoration: none; font-size: 0.92rem; transition: color 0.2s; }
+    .contact-item a:hover { color: #fff; }
+
+    /* Footer */
+    footer {
+      text-align: center; padding: 32px 20px;
+      color: var(--text-muted); font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      background: rgba(15,23,42,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 40px 20px 60px; }
+      nav { padding: 16px 20px; }
+    }
   </style>
 </head>
 <body>
+  <div class="bg-pattern"></div>
   <nav>
     <div class="nav-inner">
       <a href="/" class="logo">Suntrenia</a>
-      <a href="/" class="back">← Back to Home</a>
+      <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
   </nav>
+
   <div class="content">
     <div class="page-header">
+      <div class="page-tag">Legal</div>
       <h1>Privacy Policy</h1>
       <p>Last updated: March 2025 &nbsp;·&nbsp; Effective immediately</p>
     </div>
+
     <div class="section">
       <p>This Privacy Policy describes how Suntrenia and its products including ContentGenius collect, use, and protect your information when you use our services at suntrenia.com.</p>
     </div>
+
     <div class="section">
-      <h2>Information We Collect</h2>
-      <p>We collect information you provide when registering an account, including your name and email address. We also collect information about connected social media accounts such as YouTube and TikTok, including account identifiers and channel information, solely to provide our publishing services.</p>
+      <h2><i class="fas fa-database"></i> Information We Collect</h2>
+      <p>We collect information you provide when registering, including your name and email address. We also collect information about connected social media accounts such as YouTube and TikTok, including account identifiers and channel information, solely to provide our publishing services.</p>
     </div>
+
     <div class="section">
-      <h2>How We Use Your Information</h2>
+      <h2><i class="fas fa-cog"></i> How We Use Your Information</h2>
       <p>We use collected information to provide and improve our services, process transactions, send activity notifications, and respond to support requests. We do not use your information for advertising purposes.</p>
     </div>
+
     <div class="section">
-      <h2>TikTok Integration</h2>
+      <h2><i class="fab fa-tiktok"></i> TikTok Integration</h2>
       <div class="highlight-box">
         <p>When you connect your TikTok account, we request only the permissions necessary to publish videos on your behalf using TikTok's official Content Posting API and Login Kit. We never store your TikTok password. You can revoke our access at any time through your TikTok account settings at tiktok.com/settings.</p>
       </div>
     </div>
+
     <div class="section">
-      <h2>YouTube Integration</h2>
+      <h2><i class="fab fa-youtube"></i> YouTube Integration</h2>
       <div class="highlight-box">
         <p>When you connect your YouTube account, we use Google's OAuth 2.0 to request permission to upload videos to your channel. We store only the OAuth tokens required to perform uploads. You can revoke access at any time through your Google account settings.</p>
       </div>
     </div>
+
     <div class="section">
-      <h2>Data Sharing</h2>
+      <h2><i class="fas fa-share-alt"></i> Data Sharing</h2>
       <p>We do not sell, trade, or rent your personal information to third parties. We may share information with service providers who assist in operating our platform, subject to strict confidentiality agreements.</p>
     </div>
+
     <div class="section">
-      <h2>Data Security</h2>
+      <h2><i class="fas fa-shield-alt"></i> Data Security</h2>
       <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
     </div>
+
     <div class="section">
-      <h2>Your Rights</h2>
-      <p>You have the right to access, correct, or delete your personal information at any time. To exercise these rights, contact us at <a href="/cdn-cgi/l/email-protection#8ffffde6f9eeecf6cffcfae1fbfdeae1e6eea1ece0e2"><span class="__cf_email__" data-cfemail="50202239263133291023253e2422353e39317e333f3d">[email&#160;protected]</span></a>.</p>
+      <h2><i class="fas fa-user-check"></i> Your Rights</h2>
+      <p>You have the right to access, correct, or delete your personal information at any time. You may also request a copy of the data we hold about you. To exercise these rights, contact us using the details below.</p>
     </div>
+
     <div class="section">
-      <h2>Contact Us</h2>
-      <p>Questions about this Privacy Policy? Contact us at <a href="/cdn-cgi/l/email
+      <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+      <p>If you have questions about this Privacy Policy, please reach out to us:</p>
+      <div class="contact-card">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>Business:</span>
+          <a href="mailto:info@suntrenia.com">info@suntrenia.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-handshake"></i>
+          <span>Partnerships:</span>
+          <a href="mailto:partnerships@suntrenia.com">partnerships@suntrenia.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>Phone:</span>
+          <a href="tel:+2347034995589">+234 703 499 5589</a> &nbsp;|&nbsp;
+          <a href="tel:+2348027946808">+234 802 794 6808</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp:</span>
+          <a href="https://wa.me/2347034995589" target="_blank">+234 703 499 5589</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-telegram"></i>
+          <span>Telegram:</span>
+          <a href="https://t.me/suntrenia" target="_blank">@suntrenia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Suntrenia. All rights reserved. &nbsp;·&nbsp; <a href="/terms" style="color:var(--text-muted);text-decoration:none;">Terms of Service</a></footer>
+</body>
+</html>
